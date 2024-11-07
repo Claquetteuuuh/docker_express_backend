@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+package-lock.json
+
+# Build directory
+.build_output/
+
+# Env
+.env*.local
+.env

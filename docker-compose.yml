@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+      - "5555:5555"
+    command: npm run dev
+    environment:
+      DATABASE_URL: "postgresql://postgres:root@db:5432/claquetteuuuh_db"
+      CLAQUETTEUUUH_API_KEY: "key"
+      CURRENT_MODE: "development"
+    networks:
+      - claquetteuuuh-network
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: claquetteuuuh_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - claquetteuuuh-network
+
+volumes:
+  postgres_data:
+
+networks:
+  claquetteuuuh-network:
+    driver: bridge
+    external: true
