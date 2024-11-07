@@ -8,7 +8,7 @@
     "dev": "prisma generate && nodemon  --watch . --ext js,json,hbs,html,ts --exec \"npx tsx ./src/app.ts\"",
     "build": "prisma generate && tsc --build tsconfig.json",
     "start": "node .build/app.js",
-    "test": "jest --coverage --detectOpenHandles"
+    "test": "jest --coverage --detectOpenHandles --passWithNoTests"
   },
   "nodemonConfig": {
     "ext": "js,json,hbs,html,ts"
