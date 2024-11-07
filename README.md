@@ -2,7 +2,7 @@
 ## Set up
 3) Clone the project:
 ```bash
-git clone https://forge.univ-lyon1.fr/but3-ra1/back-end.git
+git clone https://github.com/Claquetteuuuh/docker_express_backend.git
 ```
 
 2) Install dependecies:
